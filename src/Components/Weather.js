@@ -1,14 +1,22 @@
 
 
-export default function Weather(){
+export default function Weather({dateBuilder, weather}){
     return(
+        <div>
+        {(typeof weather.main != "undefined") ? (
+            <div>
+        <div className="location"> {weather.name}, {weather.sys.country}</div>
+        <div className="date">{dateBuilder(new Date)}</div>
         <div className="weather">
             <div className="temperature">
-                75˚F
+                {Math.round(weather.main.temp)}˚C
             </div>
             <div className="forecast">
-                Sunny 
+                {weather.weather[0].main} 
             </div>
+        </div>
+        </div>
+        ) : ('')}
         </div>
     )
 }

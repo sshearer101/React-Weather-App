@@ -8,15 +8,18 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
-.app {
-  /* background-image: url('./assets/cold-bg.jpg'); */
+.App {
+  background-image: url('./Media/cold.jpg');
   background-size: cover;
   background-position: bottom;
-  transition: 0.4 ease;
+  transition: 0.4s ease-out;
 }
 
-.app.warm {
-  /* background-image: url('./assets/warm-bg.jpg'); */
+.App.warm {
+  background-image: url('Media/summer.jpg');
+   background-size: cover;
+  background-position: bottom;
+  transition: 0.4s ease-out;
 }
 
 main {
@@ -84,4 +87,11 @@ main {
   text-shadow: 3px 6px rgba(50, 50, 70, 0.5);
   text-align: center;
   box-shadow: 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.forecast {
+  color: #FFF;
+  font-size: 48px;
+  font-weight: 700;
+  text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
 }

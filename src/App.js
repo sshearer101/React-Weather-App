@@ -2,7 +2,6 @@ import './App.css';
 import { useState } from 'react';
 import Search from './Components/Search';
 import Weather from './Components/Weather';
-import Header from './Components/Header';
 
 const api = {
   key: "dd8225000d30499678711cc3fa28414e",
@@ -10,6 +9,17 @@ const api = {
 }
 
 function App() {
+  // const [query, setQuery] = useState('')
+  const [weather, setWeather] = useState({})
+
+  function searchWeather(evt){
+    if(evt.key === "Enter"){
+      fetch(`${api.base}weather?q=${evt.target.value}&units=metric&APPID=${api.key}`)
+      .then(res => res.json())
+      .then(res => setWeather(res))
+    }
+  }
+
 
  function dateBuilder(d){
     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
@@ -24,10 +34,16 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <Search />
-      <Header dateBuilder={dateBuilder}/>
-      <Weather />
+    <div className={
+      (typeof weather.main != "undefined") 
+      ? ((weather.main.temp > 16 ) 
+      ? 'App warm' : 'App') 
+      : 'App'}
+    >
+      <main>
+      <Search searchWeather={searchWeather} />
+      <Weather dateBuilder={dateBuilder} weather={weather}/>
+      </main>
     </div>
   );
 }

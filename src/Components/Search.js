@@ -1,11 +1,11 @@
 import {useState} from "react"
 
-export default function Search(){
+export default function Search({searchWeather}){
     const [search, setSearch] = useState('')
 
     function handleSubmit(e){
         e.preventDefault()
-        console.log(search)
+        searchWeather(search)
         setSearch('')
     }
     return(
@@ -16,6 +16,7 @@ export default function Search(){
                 placeholder="search"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
+                onKeyPress={searchWeather}
            />
 
         </form>
