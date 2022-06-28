@@ -1,6 +1,7 @@
 
 
 export default function Weather({dateBuilder, weather}){
+    console.log(weather)
     return(
         <div>
         {(typeof weather.main != "undefined") ? (
@@ -9,7 +10,7 @@ export default function Weather({dateBuilder, weather}){
         <div className="date">{dateBuilder(new Date)}</div>
         <div className="weather">
             <div className="temperature">
-                {Math.round(weather.main.temp)}˚C
+                {Math.round((weather.main.temp * 1.8) + 32)}˚F
             </div>
             <div className="forecast">
                 {weather.weather[0].main} 
