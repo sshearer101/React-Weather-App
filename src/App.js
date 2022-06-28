@@ -34,7 +34,6 @@ function App() {
     return `${day} ${date} ${month} ${year}`
   }
 
-  console.log(weather)
   return (
     <div className={
       (typeof weather.main != "undefined") 
