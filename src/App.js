@@ -2,6 +2,7 @@ import './App.css';
 import { useState } from 'react';
 import Search from './Components/Search';
 import Weather from './Components/Weather';
+import Header from './Components/Header';
 
 const api = {
   key: "dd8225000d30499678711cc3fa28414e",
@@ -33,6 +34,7 @@ function App() {
     return `${day} ${date} ${month} ${year}`
   }
 
+  console.log(weather)
   return (
     <div className={
       (typeof weather.main != "undefined") 
@@ -41,6 +43,7 @@ function App() {
       : 'App'}
     >
       <main>
+      <Header />
       <Search searchWeather={searchWeather} />
       <Weather dateBuilder={dateBuilder} weather={weather}/>
       </main>
